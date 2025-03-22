@@ -80,6 +80,3 @@ Os observers estão localizados em `app/Observers/` e são registrados no `AppSe
 Este projeto está licenciado sob a [MIT License](LICENSE).
 
 ---
-
-### 🚀 Agora seu projeto está pronto para uso! Se precisar de ajuda, abra uma *issue* no repositório. 😊
-
