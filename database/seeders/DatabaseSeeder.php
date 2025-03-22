@@ -22,5 +22,8 @@ class DatabaseSeeder extends Seeder
         // Insere 10 registros de livro
         Generos::factory(5)->create();
 
+        // Insere 10 registros de livro
+        User::factory(5)->create();
+
     }
 }

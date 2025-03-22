@@ -2,8 +2,16 @@
 
 use App\Http\Controllers\GenerosController;
 use App\Http\Controllers\LivrosController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\UsuarioLivrosController;
 use Illuminate\Support\Facades\Route;
+
+Route::get('user/list', [UserController::class, 'index'])->name('user.index');
+Route::get('user/form', [UserController::class, 'create'])->name('user.create');
+Route::get('user/form/{id}', [UserController::class, 'edit'])->name('user.edit');
+Route::post('user/store', [UserController::class, 'store'])->name('user.store');
+Route::put('user/update/{id}', [UserController::class, 'update'])->name('user.update');
+Route::delete('user/remove/{id}', [UserController::class, 'remove'])->name('user.remove');
 
 Route::get('/', [LivrosController::class, 'index'])->name('livros.index');
 Route::get('livros/form', [LivrosController::class, 'create'])->name('livros.create');
