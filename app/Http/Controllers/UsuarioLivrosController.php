@@ -15,38 +15,38 @@ class UsuarioLivrosController extends Controller
     public function index()
     {
 
-        // Busca todos os livros
+        // Busca todos os empréstimos
         $usuarioLivros = UsuarioLivros::with(['usuario', 'livro'])->orderBy('data_emprestimo')->get();
 
-        // Retorna a view com os livros
+        // Retorna a view com os empréstimos
         return view('usuario_livros.index', ['usuarioLivros' => $usuarioLivros]);
     }
 
-    // Formulário dos livros
+    // Formulário dos empréstimos
     public function create()
     {
 
         // Busco todos os usuários
         $users = User::get();
 
-        // Busco todos os livros
+        // Busco todos os empréstimos
         $livros = Livros::get();
 
         // Retorna a view com o formulário
         return view('usuario_livros.form', ['usuarioLivros' => new UsuarioLivros(), 'users' => $users, 'livros' => $livros, 'statusEmprestimo' => StatusEmprestimo::getOptions()]);
     }
 
-    // Formulário dos livros
+    // Formulário dos empréstimos
     public function edit($id)
     {
 
-        // Busca o livro
+        // Busca o empréstimo
         $usuarioLivros = UsuarioLivros::find($id);
 
         // Busco todos os usuários
         $users = User::get();
 
-        // Busco todos os livros
+        // Busco todos os empréstimos
         $livros = Livros::get();
 
         // Retorna a view com o formulário
@@ -77,7 +77,7 @@ class UsuarioLivrosController extends Controller
     public function update(UsuarioLivrosRequest $usuarioLivrosRequest, $id)
     {
 
-        // Busca o livro no banco
+        // Busca o empréstimo no banco
         $usuarioLivro = UsuarioLivros::findOrFail($id);
 
         // Validação da informação
@@ -96,11 +96,11 @@ class UsuarioLivrosController extends Controller
         return redirect()->route('usuario_livros.index')->with('success', 'Livro atualizado com sucesso!');
     }
 
-    // Remoção do livro
+    // Remoção do empréstimo
     public function remove($id)
     {
 
-        // Busca o livro pelo ID
+        // Busca o empréstimo pelo ID
         $usuarioLivro = UsuarioLivros::find($id);
 
         // Remoção do registro

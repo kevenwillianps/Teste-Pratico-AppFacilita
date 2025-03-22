@@ -32,7 +32,13 @@
 
         <th scope="col">
 
-          Nome
+          Usuário
+
+        </th>
+
+        <th scope="col">
+
+          Livro
 
         </th>
 
@@ -66,7 +72,13 @@
 
         <td>
 
-          {{ $usuarioLivro->name }}
+          {{ $usuarioLivro->usuario->name }}
+
+        </td>
+
+        <td>
+
+          {{ $usuarioLivro->livro->nome }}
 
         </td>
 

@@ -27,7 +27,7 @@ class LivroGenerosRequest extends FormRequest
         ];
     }
 
-    // Define as mensagens de erro personalizadas
+    //Mensagens de validação personalizadas
     public function messages() {
         
         return[

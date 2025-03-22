@@ -2,6 +2,14 @@
 
 namespace App\Providers;
 
+use App\Models\Generos;
+use App\Models\LivroGeneros;
+use App\Models\Livros;
+use App\Models\UsuarioLivros;
+use App\Observers\GeneroObserver;
+use App\Observers\LivroGeneroObserver;
+use App\Observers\LivroObserver;
+use App\Observers\UsuarioLivroObserver;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -19,6 +27,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+        Generos::observe(GeneroObserver::class);
+        LivroGeneros::observe(LivroGeneroObserver::class);
+        Livros::observe(LivroObserver::class);
+        UsuarioLivros::observe(UsuarioLivroObserver::class);
     }
 }

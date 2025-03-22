@@ -27,12 +27,12 @@ class LivrosRequest extends FormRequest
             'nome' => ['required', 'max:255'],
             'autor' => ['required', 'max:255'],
             'situacao' => ['required', new Enum(StatusLivro::class)],
-            'generos' => 'required|array', // O campo generos deve ser um array
-            'generos.*' => 'exists:generos,id' // Cada item do array deve existir na tabela generos
+            'generos' => ['required', 'array'],
+            'generos.*' => ['exists:generos,id']
         ];
     }
 
-    //Mensaragens de validação personalizadas
+    //Mensagens de validação personalizadas
     public function messages()
     {
         

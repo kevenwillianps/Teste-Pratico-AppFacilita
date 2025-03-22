@@ -45,19 +45,15 @@
 
         </div>
         
-        <form action="{{ route('livros.generos.store', ['id' => $livros->id]) }}" method="post">
+        @foreach($livros->generos as $key => $genero)
 
-            @foreach($livros->generos as $key => $genero)
+            <span class="badge bg-primary">
 
-                <span class="badge bg-primary">
+                {{ $genero->nome }}
 
-                    {{ $genero->nome }}
+            </span>
 
-                </span>
-
-            @endforeach
-
-        </form>
+        @endforeach
 
     </div>
 

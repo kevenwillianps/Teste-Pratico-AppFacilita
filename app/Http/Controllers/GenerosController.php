@@ -9,18 +9,18 @@ use Illuminate\Http\Request;
 class GenerosController extends Controller
 {
 
-    // Página inicial dos livros
+    // Página inicial dos generos
     public function index()
     {
 
-        // Busca todos os livros
+        // Busca todos os generos
         $generos = Generos::orderBy('nome')->get();
 
-        // Retorna a view com os livros
+        // Retorna a view com os generos
         return view('generos.index', ['generos' => $generos]);
     }
 
-    // Formulário dos livros
+    // Formulário dos generos
     public function create()
     {
 
@@ -28,11 +28,11 @@ class GenerosController extends Controller
         return view('generos.form', ['generos' => new Generos()]);
     }
 
-    // Formulário dos livros
+    // Formulário dos generos
     public function edit($id)
     {
 
-        // Busca o livro
+        // Busca o genero
         $generos = Generos::find($id);
 
         // Retorna a view com o formulário
@@ -52,14 +52,14 @@ class GenerosController extends Controller
         ]);
 
         // Redireciona para a página inicial
-        return redirect()->route('generos.index')->with('success', 'Livro cadastrado com sucesso!');
+        return redirect()->route('generos.index')->with('success', 'genero cadastrado com sucesso!');
     }
 
     // Atualiza os dados do formulário
     public function update(GenerosRequest $generosRequest, $id)
     {
 
-        // Busca o livro no banco
+        // Busca o genero no banco
         $genero = Generos::findOrFail($id);
 
         // Validação da informação
@@ -71,20 +71,20 @@ class GenerosController extends Controller
         ]);
 
         // Redireciona para a página inicial
-        return redirect()->route('generos.index')->with('success', 'Livro atualizado com sucesso!');
+        return redirect()->route('generos.index')->with('success', 'genero atualizado com sucesso!');
     }
 
-    // Remoção do livro
+    // Remoção do genero
     public function remove($id)
     {
 
-        // Busca o livro pelo ID
-        $livro = Generos::find($id);
+        // Busca o genero pelo ID
+        $genero = Generos::find($id);
 
         // Remoção do registro
-        $livro->delete();
+        $genero->delete();
 
         // Redireciona para a página inicial
-        return redirect()->route('generos.index')->with('success', 'Livro removido com sucesso!');
+        return redirect()->route('generos.index')->with('success', 'genero removido com sucesso!');
     }
 }

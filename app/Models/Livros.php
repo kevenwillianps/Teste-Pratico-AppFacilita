@@ -26,6 +26,7 @@ class Livros extends Model
         return $this->belongsToMany(Generos::class, 'livro_generos', 'livro_id', 'genero_id')->withTimestamps();
     }
 
+    // Define o relacionamento entre tabelas
     public function emprestimos()
     {
         return $this->hasMany(UsuarioLivros::class, 'livro_id');

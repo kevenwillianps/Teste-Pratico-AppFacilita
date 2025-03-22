@@ -2,7 +2,9 @@
 
 namespace App\Http\Requests;
 
+use App\Enums\StatusEmprestimo;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rules\Enum;
 
 class UsuarioLivrosRequest extends FormRequest
 {
@@ -22,11 +24,11 @@ class UsuarioLivrosRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'user_id' => ['required'],
-            'livro_id' => ['required'],
+            'user_id' => ['required', 'integer'],
+            'livro_id' => ['required', 'integer'],
             'data_emprestimo' => ['required', 'date'],
             'data_devolucao' => ['required', 'date'],
-            'situacao' => ['required']
+            'situacao' => ['required', new Enum(StatusEmprestimo::class)]
         ];
     }
 
@@ -38,7 +40,8 @@ class UsuarioLivrosRequest extends FormRequest
             'livro_id.required' => 'O livro deve ser informado',
             'data_emprestimo.required' => 'Data de empréstimo deve ser informado',
             'data_emprestimo.required' => 'Data de devolução deve ser informado',
-            'situacao.required' => 'A situação deve ser informada',
+            'situacao.required' => 'O campo situação é obrigatório',
+            'situacao.in' => 'O campo situação deve ser emprestado, devolvido, atrasado',
         ];
     }
 

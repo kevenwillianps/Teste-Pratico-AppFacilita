@@ -22,11 +22,11 @@ class GenerosRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'nome' => 'required|max:255'
+            'nome' => ['required', 'max:255']
         ];
     }
 
-    //Mensaragens de validação personalizadas
+    //Mensagens de validação personalizadas
     public function messages()
     {
         
